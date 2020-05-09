@@ -1,4 +1,3 @@
-from predictor.base import BasePredictor
 import joblib
 from pathlib import Path
 
@@ -6,7 +5,7 @@ import pandas as pd
 from predictor.exceptions import NoTextException
 import os
 
-class ClassifierPredictor(BasePredictor):
+class ClassifierPredictor:
     
     def __init__(self, 
                  tfidf_path = None, 
