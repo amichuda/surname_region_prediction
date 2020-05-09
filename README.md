@@ -13,7 +13,7 @@ The intended idea behind using this package will be take a columns of surnames a
       - [\_\_init\_\_()](#init)
   - [predictor.classifier_prediction module](#predictorclassifierprediction-module)
     - [class predictor.classifier_prediction.ClassifierPredictor(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#class-predictorclassifierpredictionclassifierpredictortfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
-      - [\__init__(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#inittfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
+      - [\_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#inittfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
       - [load_label_encoder()](#loadlabelencoder)
       - [load_model()](#loadmodel)
       - [load_tfidf()](#loadtfidf)
