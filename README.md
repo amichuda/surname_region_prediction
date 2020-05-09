@@ -8,9 +8,6 @@ The intended idea behind using this package will be take a columns of surnames a
   - [Installation](#installation)
 - [predictor package](#predictor-package)
   - [Submodules](#submodules)
-  - [predictor.base module](#predictorbase-module)
-    - [class predictor.base.BasePredictor()](#class-predictorbasebasepredictor)
-      - [\_\_init\_\_()](#init)
   - [predictor.classifier_prediction module](#predictorclassifierprediction-module)
     - [class predictor.classifier_prediction.ClassifierPredictor(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#class-predictorclassifierpredictionclassifierpredictortfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
       - [\_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#inittfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
@@ -37,7 +34,6 @@ uber_surname_region_prediction
 ├─ main.py
 ├─ predictor
 │  ├─ __init__.py
-│  ├─ base.py
 │  ├─ classifier_prediction.py
 │  ├─ exceptions.py
 │  ├─ saved_models
@@ -105,21 +101,11 @@ print(predict_xgb)
 
 ## Submodules
 
-## predictor.base module
-
-
-### class predictor.base.BasePredictor()
-Bases: `object`
-
-
-#### \_\_init\_\_()
-Initialize self.  See help(type(self)) for accurate signature.
-
 ## predictor.classifier_prediction module
 
 
 ### class predictor.classifier_prediction.ClassifierPredictor(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)
-Bases: `predictor.base.BasePredictor`
+Bases: `object`
 
 
 #### \_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)
