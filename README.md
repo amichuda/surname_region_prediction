@@ -72,6 +72,35 @@ or install repository:
 pip install git+https://github.com/amichuda/uber_surname_region_prediction
 ```
 
+## Quickstart
+
+To run the predictors, see `main.py` for a runnable example:
+
+```python
+from predictor.classifier_prediction import ClassifierPredictor
+from predictor.table_predictor import TablePredictor
+import pandas as pd
+
+# Table Predictor
+t = TablePredictor()
+
+surnames = ['Ahimbisibwe', 'Auma', 'Amin', 'Makubuya', 'Museveni', 'Oculi', 'Kadaga']
+
+table_predict = t.predict(surnames, n_jobs=10)
+print(table_predict)
+
+
+# Classifier Predictor
+c = ClassifierPredictor()
+
+predict_xgb = c.predict(surnames, 
+              get_label_names=True, 
+              predict_prob = True,
+              df_out =True)
+
+print(predict_xgb)
+```
+
 # predictor package
 
 ## Submodules
