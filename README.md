@@ -10,7 +10,7 @@ The intended idea behind using this package will be take a columns of surnames a
   - [Submodules](#submodules)
   - [predictor.base module](#predictorbase-module)
     - [class predictor.base.BasePredictor()](#class-predictorbasebasepredictor)
-      - [\__init__()](#init)
+      - [\_\_init\_\_()](#init)
   - [predictor.classifier_prediction module](#predictorclassifierprediction-module)
     - [class predictor.classifier_prediction.ClassifierPredictor(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#class-predictorclassifierpredictionclassifierpredictortfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
       - [\__init__(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#inittfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
@@ -83,7 +83,7 @@ pip install git+https://github.com/amichuda/uber_surname_region_prediction
 Bases: `object`
 
 
-#### \__init__()
+#### \_\_init\_\_()
 Initialize self.  See help(type(self)) for accurate signature.
 
 ## predictor.classifier_prediction module
@@ -93,7 +93,7 @@ Initialize self.  See help(type(self)) for accurate signature.
 Bases: `predictor.base.BasePredictor`
 
 
-#### \__init__(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)
+#### \_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)
 This class uses a pickled trained classifier to make predictions about surnames.
 It loads the pickled processors (which include a tfidf transformer and label encoder),
 as well as the classifier and then trainsforms input text and give prediction
@@ -174,7 +174,7 @@ Raises error if text input is not given
 Bases: `object`
 
 
-#### \__init__(table_path=None)
+#### \_\_init\_\_(table_path=None)
 A class for predicting origin based on direct frequency of name occurrences
 
 Keyword Arguments:
