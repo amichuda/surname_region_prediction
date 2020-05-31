@@ -1,6 +1,11 @@
 # uber_surname_region_prediction
 This repository creates a package that predicts region of origin based on surname in Uganda.
 
+## Changelog
+
+05/31/2020:
+- Added classifier for agro-ecological zones that can be accessed with the `agro_eco` flag.
+
 The intended idea behind using this package will be take a columns of surnames and apply these functions to the names to get predicted regions of origin.
 
 - [uber_surname_region_prediction](#ubersurnameregionprediction)
