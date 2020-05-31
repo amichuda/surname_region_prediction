@@ -1,6 +1,5 @@
 import joblib
 from pathlib import Path
-import xgboost as xgb
 
 import pandas as pd
 from predictor.exceptions import NoTextException
@@ -14,7 +13,6 @@ class ClassifierPredictor:
         model_path=None,
         label_encoder_path=None,
         agro_eco=False,
-        xgb_load = False,
         **kwargs
     ):
         """This class uses a pickled trained classifier to make predictions about surnames.
@@ -27,7 +25,6 @@ class ClassifierPredictor:
             label_encoder_path {str} -- path to label encoder pickled object (default: {None})
         """        
         
-        self.xgb_load = xgb_load
 
         if tfidf_path is None:
             if agro_eco:
