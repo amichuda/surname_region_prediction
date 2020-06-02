@@ -7,29 +7,35 @@ The intended idea behind using this package will be take a columns of surnames a
 
 05/31/2020:
 - Added classifier for agro-ecological zones that can be accessed with the `agro_eco` flag.
+06/02/2020:
+- Added ability to use pandas dataframe as input in to table and classifier predictors
+- added environment file to recreate conda environment.
 
 ## Table of Contents
 
-- [uber_surname_region_prediction](#ubersurnameregionprediction)
+- [uber_surname_region_prediction](#uber_surname_region_prediction)
+  - [Changelog](#changelog)
+  - [Table of Contents](#table-of-contents)
   - [Directory Structure](#directory-structure)
   - [Installation](#installation)
+  - [Quickstart](#quickstart)
 - [predictor package](#predictor-package)
   - [Submodules](#submodules)
-  - [predictor.classifier_prediction module](#predictorclassifierprediction-module)
-    - [class predictor.classifier_prediction.ClassifierPredictor(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#class-predictorclassifierpredictionclassifierpredictortfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
-      - [\_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#inittfidfpathnone-modelpathnone-labelencoderpathnone-kwargs)
-      - [load_label_encoder()](#loadlabelencoder)
-      - [load_model()](#loadmodel)
-      - [load_tfidf()](#loadtfidf)
-      - [predict(text=None, get_label_names=False, predict_prob=False, df_out=False)](#predicttextnone-getlabelnamesfalse-predictprobfalse-dfoutfalse)
-      - [process_text(text)](#processtexttext)
-      - [transform_text(text=None)](#transformtexttextnone)
+  - [predictor.classifier_prediction module](#predictorclassifier_prediction-module)
+    - [class predictor.classifier_prediction.ClassifierPredictor(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#class-predictorclassifier_predictionclassifierpredictortfidf_pathnone-model_pathnone-label_encoder_pathnone-kwargs)
+      - [\_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#inittfidf_pathnone-model_pathnone-label_encoder_pathnone-kwargs)
+      - [load_label_encoder()](#load_label_encoder)
+      - [load_model()](#load_model)
+      - [load_tfidf()](#load_tfidf)
+      - [predict(text=None, get_label_names=False, predict_prob=False, df_out=False)](#predicttextnone-get_label_namesfalse-predict_probfalse-df_outfalse)
+      - [process_text(text)](#process_texttext)
+      - [transform_text(text=None)](#transform_texttextnone)
   - [predictor.exceptions module](#predictorexceptions-module)
     - [exception predictor.exceptions.NoTextException()](#exception-predictorexceptionsnotextexception)
-  - [predictor.table_predictor module](#predictortablepredictor-module)
-    - [class predictor.table_predictor.TablePredictor(table_path=None)](#class-predictortablepredictortablepredictortablepathnone)
-      - [\__init__(table_path=None)](#inittablepathnone)
-      - [predict(text, n_jobs=1)](#predicttext-njobs1)
+  - [predictor.table_predictor module](#predictortable_predictor-module)
+    - [class predictor.table_predictor.TablePredictor(table_path=None)](#class-predictortable_predictortablepredictortable_pathnone)
+      - [\_\_init\_\_(table_path=None)](#inittable_pathnone)
+      - [predict(text, n_jobs=1)](#predicttext-n_jobs1)
   - [Module contents](#module-contents)
 
 ## Directory Structure
@@ -77,31 +83,48 @@ pip install git+https://github.com/amichuda/uber_surname_region_prediction
 
 ## Quickstart
 
-To run the predictors, see `main.py` for a runnable example:
+To recreate the conda environment, do the following:
+
+```bash
+
+cd /path/to/uber_surname_region_prediction
+
+conda env -f environment.yml
+```
+
+To run the predictors, see `main.py` for a runnable example. A minimal example, using a pandas dataframe is shown below:
 
 ```python
+
 from predictor.classifier_prediction import ClassifierPredictor
 from predictor.table_predictor import TablePredictor
+
 import pandas as pd
 
-# Table Predictor
-t = TablePredictor()
+surnames = pd.DataFrame({'names':['Ahimbisibwe', 'Auma', 'Amin', 
+                         'Makubuya', 'Museveni', 'Oculi', 'Kadaga']})
 
-surnames = ['Ahimbisibwe', 'Auma', 'Amin', 'Makubuya', 'Museveni', 'Oculi', 'Kadaga']
+# %% Table Predictor
+t = TablePredictor(column_name='names')
 
 table_predict = t.predict(surnames, n_jobs=10)
-print(table_predict)
 
-
-# Classifier Predictor
-c = ClassifierPredictor()
+# %% Classifier for Regions
+c = ClassifierPredictor(column_name='names')
 
 predict_xgb = c.predict(surnames, 
               get_label_names=True, 
               predict_prob = True,
               df_out =True)
 
-print(predict_xgb)
+# %% Agro-ecological Zones Classifier
+cag = ClassifierPredictor(column_name = 'names', agro_eco=True)
+
+predict_xgb_agro_eco = cag.predict(surnames, 
+              get_label_names=True, 
+              predict_prob = True,
+              df_out =True)
+              
 ```
 
 # predictor package

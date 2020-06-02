@@ -17,18 +17,18 @@ There is a TablePredictor and a ClassifierPredictor which should both be used fo
 
 # %%
 # Get some representative names
-surnames = pd.DataFrame(['Ahimbisibwe', 'Auma', 'Amin', 
-                         'Makubuya', 'Museveni', 'Oculi', 'Kadaga'])
+surnames = pd.DataFrame({'names':['Ahimbisibwe', 'Auma', 'Amin', 
+                         'Makubuya', 'Museveni', 'Oculi', 'Kadaga']})
 
 # %%
-t = TablePredictor(column_name=0)
+t = TablePredictor(column_name='names')
 table_predict = t.predict(surnames, n_jobs=10)
 print(table_predict.to_markdown())
 
 
 # %%
 # Regular XGB Predictor
-c = ClassifierPredictor(column_name=0)
+c = ClassifierPredictor(column_name='names')
 
 predict_xgb = c.predict(surnames, 
               get_label_names=True, 
@@ -39,7 +39,7 @@ print(predict_xgb.to_markdown())
 
 # %%
 # Agro-Eological Zone Predictor
-cag = ClassifierPredictor(column_name = 0, agro_eco=True)
+cag = ClassifierPredictor(column_name = 'names', agro_eco=True)
 
 predict_xgb_agro_eco = cag.predict(surnames, 
               get_label_names=True, 
