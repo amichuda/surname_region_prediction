@@ -11,7 +11,7 @@ import itertools
 
 class TablePredictor:
     
-    def __init__(self, table_path  =None):
+    def __init__(self, table_path  =None, column_name = None):
         """A class for predicting origin based on direct frequency of name occurrences
 
         Keyword Arguments:
@@ -24,6 +24,8 @@ class TablePredictor:
         self.table_path = table_path
         
         self.table = self._load_table()
+        
+        self.column_name = column_name
         
     def _load_table(self):
         """Loads table as attribute
@@ -46,6 +48,12 @@ class TablePredictor:
         
         if isinstance(text, str):
             text = [text]
+            
+        if isinstance(text, pd.DataFrame):
+            if self.column_name is None:
+                raise Exception("Got pandas dataframe, but did not specify `column_name`")
+            
+            text = text[self.column_name].tolist()
         
         processed_text = [t
                           .lower()

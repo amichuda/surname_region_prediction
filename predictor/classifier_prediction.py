@@ -9,6 +9,7 @@ import os
 class ClassifierPredictor:
     def __init__(
         self,
+        column_name = None,
         tfidf_path=None,
         model_path=None,
         label_encoder_path=None,
@@ -80,6 +81,8 @@ class ClassifierPredictor:
         self.tfidf_path = tfidf_path
         self.model_path = model_path
         self.label_encoder_path = label_encoder_path
+        
+        self.column_name = column_name
 
     def load_tfidf(self):
         """Loads Tfidf transformer. See 
@@ -116,6 +119,10 @@ class ClassifierPredictor:
         if isinstance(text, str):
 
             text = [text]
+        elif isinstance(text, pd.DataFrame):
+            if self.column_name is None:
+                raise Exception("Got a dataframe, but did not get `column_name`")
+            text = text[self.column_name].tolist()
 
         processed_text = [i.lower().rstrip().lstrip() for i in text]
 
@@ -128,9 +135,7 @@ class ClassifierPredictor:
 
         tfidf = self.load_tfidf()
 
-        processed_text = self.process_text(text)
-
-        return tfidf.transform(processed_text)
+        return tfidf.transform(text)
 
     def predict(
         self, text=None, get_label_names=False, predict_prob=False, df_out=False
@@ -154,6 +159,8 @@ class ClassifierPredictor:
             pandas.DataFrame or list -- An object that contains predictions from the model
         """
         labels = self.load_label_encoder()
+        
+        text = self.process_text(text)
 
         X = self.transform_text(text)
 
