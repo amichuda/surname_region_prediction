@@ -10,6 +10,10 @@ The intended idea behind using this package will be take a columns of surnames a
 06/02/2020:
 - Added ability to use pandas dataframe as input in to table and classifier predictors
 - added environment file to recreate conda environment.
+06/04/2020:
+- made fuzzy matching in the table predictor optional (with the `fuzzy` flag)
+  - `False` by default
+- predictions output the input names
 
 ## Table of Contents
 
