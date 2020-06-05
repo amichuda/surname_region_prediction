@@ -138,8 +138,7 @@ class ClassifierPredictor:
         return tfidf.transform(text)
 
     def predict(
-        self, text=None, get_label_names=False, predict_prob=False, df_out=False
-    ):
+        self, text=None, get_label_names=False, predict_prob=False, df_out=False):
         """Predicts origin based on classifier
 
         Keyword Arguments:
@@ -159,9 +158,9 @@ class ClassifierPredictor:
             pandas.DataFrame or list -- An object that contains predictions from the model
         """
         labels = self.load_label_encoder()
-        
+        raw_text_aux = text.copy(deep = True)
         text = self.process_text(text)
-
+        raw_text = raw_text_aux.assign(processed_text = text).set_index('processed_text')
         X = self.transform_text(text)
 
         model = self.load_model()
@@ -193,7 +192,17 @@ class ClassifierPredictor:
 
         if df_out:
             try:
-                return pd.DataFrame(result).T.sort_index()
+                return (
+                    pd.DataFrame(result).T
+                    .sort_index()
+                    .merge(raw_text, 
+                           left_index = True, 
+                           right_index = True)
+                    .reset_index()
+                    .set_index('names')
+                    .rename({'index' : 'processed_surname'}, axis=1)
+                    )
+                
             except ValueError:
                 return pd.DataFrame(result.values(), index = result.keys()).rename({0 : 'prediction'}, axis=1)
         else:

@@ -140,7 +140,7 @@ class TablePredictor:
         
               
     
-    def predict(self, text, n_jobs = 1):
+    def predict(self, text, fuzzy = False, n_jobs = 1):
         """Predicts region probability by first trying to find an exact match and then 
         fuzzy matching for any names not matched.
 
@@ -161,41 +161,42 @@ class TablePredictor:
         # First do exact match
         predicted_df = self._exact_match(text = processed_text, data = self.table)
         
-        # get dict of exact matches in same form as processed text
-        predicted_dict = dict(map(reversed, predicted_df['processed_surname'].to_dict().items()))
-        
-        if predicted_df.index.size != len(processed_text):
-            difference = len(processed_text) - predicted_df.index.unique().size
-            print(f"Doing fuzzy matching for {difference} names...")
+        if fuzzy:
+            # get dict of exact matches in same form as processed text
+            predicted_dict = dict(map(reversed, predicted_df['processed_surname'].to_dict().items()))
             
-            # Get names that weren't found
-            lost_dict = {k : processed_text[k] for k in set(processed_text) - set(predicted_dict)}
-            
-            if n_jobs == 1:
-                fuzzy_matches = self._fuzzy_match(text = lost_dict, data = self.table)
+            if predicted_df.index.size != len(processed_text):
+                difference = len(processed_text) - predicted_df.index.unique().size
+                print(f"Doing fuzzy matching for {difference} names...")
                 
-            elif n_jobs > 1:
-                _fuzzy_lost_dict = partial(self._fuzzy_match, text = lost_dict)
+                # Get names that weren't found
+                lost_dict = {k : processed_text[k] for k in set(processed_text) - set(predicted_dict)}
                 
-                df_list = self._partition_table(data = self.table, n = n_jobs)
-                
-                pool = Pool(processes = n_jobs)
-                results = pool.map(_fuzzy_lost_dict, df_list)
-                
-                # Now get max probability for each name
-                results_df = pd.concat(results)
-                
-                max_df = (
-                    results_df
-                    .groupby(results_df.index)
-                    .max()
-                    .merge(self.table, left_on = 'name_match', right_index = True)
-                )
-                
-                predicted_df = predicted_df.append(max_df)
-                
-            else:
-                raise Exception(f"{n_jobs} n_jobs not allowed as an input")
+                if n_jobs == 1:
+                    fuzzy_matches = self._fuzzy_match(text = lost_dict, data = self.table)
+                    
+                elif n_jobs > 1:
+                    _fuzzy_lost_dict = partial(self._fuzzy_match, text = lost_dict)
+                    
+                    df_list = self._partition_table(data = self.table, n = n_jobs)
+                    
+                    pool = Pool(processes = n_jobs)
+                    results = pool.map(_fuzzy_lost_dict, df_list)
+                    
+                    # Now get max probability for each name
+                    results_df = pd.concat(results)
+                    
+                    max_df = (
+                        results_df
+                        .groupby(results_df.index)
+                        .max()
+                        .merge(self.table, left_on = 'name_match', right_index = True)
+                    )
+                    
+                    predicted_df = predicted_df.append(max_df)
+                    
+                else:
+                    raise Exception(f"{n_jobs} n_jobs not allowed as an input")
             
         return predicted_df
             
