@@ -26,6 +26,11 @@ table_predict = t.predict(surnames, n_jobs=10)
 print(table_predict.to_markdown())
 
 
+# %% 
+ta = TablePredictor(column_name='names', agro_eco=True)
+
+table_agro_eco_predict = ta.predict(surnames, n_jobs=10)
+print(table_agro_eco_predict.to_markdown())
 # %%
 # Regular XGB Predictor
 c = ClassifierPredictor(column_name='names')
