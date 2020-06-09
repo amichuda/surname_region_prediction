@@ -199,7 +199,7 @@ class ClassifierPredictor:
                            left_index = True, 
                            right_index = True)
                     .reset_index()
-                    .set_index('names')
+                    .set_index(self.column_name)
                     .rename({'index' : 'processed_surname'}, axis=1)
                     )
                 
