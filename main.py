@@ -74,3 +74,20 @@ comp_df = region_df.merge(agro_eco_df,
 print(comp_df.to_markdown())
 
 
+# 09/22/2020 NEW MODEL
+
+cg = ClassifierPredictor(column_name = 'names', gaul=True)
+
+predict_xgb_gaul = cg.predict(surnames, 
+              get_label_names=True, 
+              predict_prob = True,
+              df_out =True)
+
+print(predict_xgb_gaul.to_markdown())
+
+
+# %% 
+tg = TablePredictor(column_name='names', gaul=True)
+
+table_gaul_predict = tg.predict(surnames, n_jobs=10)
+print(table_gaul_predict.to_markdown())

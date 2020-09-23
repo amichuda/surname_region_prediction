@@ -11,7 +11,7 @@ import itertools
 
 class TablePredictor:
     
-    def __init__(self, agro_eco = False, table_path  = None, column_name = None):
+    def __init__(self, agro_eco = False, gaul=False, table_path  = None, column_name = None):
         """A class for predicting origin based on direct frequency of name occurrences
 
         Keyword Arguments:
@@ -21,6 +21,10 @@ class TablePredictor:
         if table_path is None:
             if agro_eco:
                 table_path = Path('predictor',"table", "agro_zone_predictor.csv")
+            elif agro_eco==False and gaul==True:
+                table_path = Path('predictor', 'table', 'gaul_predictor.csv')
+            elif agro_eco == True and gaul == True:
+                raise Exception("Can't have agro_eco and gaul at the same time.")
             else:
                 table_path = Path('predictor',"table", "table_predictor.csv")
             

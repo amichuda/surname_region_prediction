@@ -14,6 +14,7 @@ class ClassifierPredictor:
         model_path=None,
         label_encoder_path=None,
         agro_eco=False,
+        gaul=False,
         **kwargs
     ):
         """This class uses a pickled trained classifier to make predictions about surnames.
@@ -25,14 +26,24 @@ class ClassifierPredictor:
             model_path {str} -- path to joblib pickle of trained model (default: {None})
             label_encoder_path {str} -- path to label encoder pickled object (default: {None})
         """        
+        if agro_eco ==True and gaul==True:
+            
+            raise Exception("You can't have agro_eco and gaul both true")
         
 
         if tfidf_path is None:
+            
             if agro_eco:
                 tfidf_path = Path(
                     "predictor",
                     "saved_models",
                     "tfidf_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib",
+                )
+            elif gaul:
+                tfidf_path = Path(
+                    "predictor",
+                    "saved_models",
+                    "tfidf_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib",
                 )
 
             else:
@@ -52,6 +63,13 @@ class ClassifierPredictor:
                     "saved_models",
                     "label_encoder_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib",
                 )
+            elif gaul:
+                label_encoder_path = Path(
+                    "predictor",
+                    "saved_models",
+                    "label_encoder_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib",
+                )
+                
             else:
                 label_encoder_path = Path(
                     "predictor",
@@ -69,6 +87,13 @@ class ClassifierPredictor:
                     "saved_models",
                     "xgb_None_multilabel_False_add_kampala_True_agro_zone_smote_False_opt.joblib",
                 )
+            elif gaul:
+                model_path = Path(
+                    "predictor",
+                    "saved_models",
+                    "xgb_None_multilabel_False_add_kampala_True_gaul_smote_False_gaul_opt.joblib"
+                )
+                
             else:
                 model_path = Path(
                     "predictor",
