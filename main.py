@@ -83,11 +83,11 @@ predict_xgb_gaul = cg.predict(surnames,
               predict_prob = True,
               df_out =True)
 
-print(predict_xgb_gaul.to_markdown())
+print(predict_xgb_gaul.to_markdown(floatfmt = ".2f"))
 
 
 # %% 
 tg = TablePredictor(column_name='names', gaul=True)
 
 table_gaul_predict = tg.predict(surnames, n_jobs=10)
-print(table_gaul_predict.to_markdown())
+print(table_gaul_predict.to_markdown(floatfmt = ".2f"))
