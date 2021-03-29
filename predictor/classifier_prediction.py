@@ -15,6 +15,7 @@ class ClassifierPredictor:
         label_encoder_path=None,
         agro_eco=False,
         gaul=False,
+        calibrate=True,
         **kwargs
     ):
         """This class uses a pickled trained classifier to make predictions about surnames.
@@ -88,12 +89,19 @@ class ClassifierPredictor:
                     "xgb_None_multilabel_False_add_kampala_True_agro_zone_smote_False_opt.joblib",
                 )
             elif gaul:
-                model_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "xgb_None_multilabel_False_add_kampala_True_gaul_smote_False_gaul_opt.joblib"
-                )
-                
+                if calibrate:
+                    model_path = Path(
+                        "predictor",
+                        'saved_models',
+                        'xgb_None_calibrated_gaul_opt.joblib'
+                    )
+                else:
+                    model_path = Path(
+                        "predictor",
+                        "saved_models",
+                        "xgb_None_multilabel_False_add_kampala_True_gaul_smote_False_gaul_opt.joblib"
+                    )
+                    
             else:
                 model_path = Path(
                     "predictor",
