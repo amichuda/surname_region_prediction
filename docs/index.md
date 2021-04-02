@@ -40,7 +40,7 @@ from the folder,
 or install repository:
 
 ```
-pip install git+https://github.com/amichuda/uber_surname_region_prediction
+pip install git+https://github.com/amichuda/surname_region_prediction
 ```
 
 ## Quickstart
@@ -49,7 +49,7 @@ To recreate the conda environment, do the following:
 
 ```bash
 
-cd /path/to/uber_surname_region_prediction
+cd /path/to/surname_region_prediction
 
 conda env -f environment.yml
 ```
@@ -59,7 +59,7 @@ conda env -f environment.yml
 This outlines the directory structure of the project:
 
 ```
-uber_surname_region_prediction
+surname_region_prediction
 ├── environment.yml
 ├── LICENSE
 ├── main.py

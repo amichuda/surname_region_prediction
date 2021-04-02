@@ -1,4 +1,4 @@
-# uber_surname_region_prediction
+# surname_region_prediction
 This repository creates a package that predicts region of origin based on surname in Uganda.
 
 The intended idea behind using this package will be take a columns of surnames and apply these functions to the names to get predicted regions of origin.
@@ -29,7 +29,7 @@ The intended idea behind using this package will be take a columns of surnames a
 This outlines the directory structure of the project:
 
 ```
-uber_surname_region_prediction
+surname_region_prediction
 ├── environment.yml
 ├── LICENSE
 ├── main.py
@@ -74,7 +74,7 @@ Then extract the zip file and run `git lfs install`.
 After this, you should be able to clone it with `git lfs`:
 
 ```
-git lfs clone https://github.com/amichuda/uber_surname_region_prediction.git
+git lfs clone https://github.com/amichuda/surname_region_prediction.git
 ```
 
 To install the package, you can install with pip:
@@ -87,7 +87,7 @@ from the folder, or to recreate the conda environment, do the following:
 
 ```bash
 
-cd /path/to/uber_surname_region_prediction
+cd /path/to/surname_region_prediction
 
 conda env -f environment.yml
 ```

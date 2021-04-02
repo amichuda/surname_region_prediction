@@ -21,7 +21,7 @@ CLASSIFIERS = [
 ]
 LICENSE = "MIT"
 DESCRIPTION = "Predictor of Ugandan region of origin based on surname"
-URL = "https://github.com/amichuda/uber_surname_region_prediction"
+URL = "https://github.com/amichuda/surname_region_prediction"
 PYTHON_REQ = ">=3.5"
 
 with open("requirements.txt") as f:
