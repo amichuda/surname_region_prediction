@@ -322,6 +322,40 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#predictor.table_predictor" class="md-nav__link">
+    predictor.table_predictor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictor.table_predictor.TablePredictor" class="md-nav__link">
+    TablePredictor
+  </a>
+  
+    <nav class="md-nav" aria-label="TablePredictor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictor.table_predictor.TablePredictor.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predictor.table_predictor.TablePredictor.predict" class="md-nav__link">
+    predict()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -414,6 +448,40 @@
           <li class="md-nav__item">
   <a href="#predictor.classifier_prediction.ClassifierPredictor.transform_text" class="md-nav__link">
     transform_text()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictor.table_predictor" class="md-nav__link">
+    predictor.table_predictor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictor.table_predictor.TablePredictor" class="md-nav__link">
+    TablePredictor
+  </a>
+  
+    <nav class="md-nav" aria-label="TablePredictor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictor.table_predictor.TablePredictor.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#predictor.table_predictor.TablePredictor.predict" class="md-nav__link">
+    predict()
   </a>
   
 </li>
@@ -1126,6 +1194,288 @@
     <span class="n">tfidf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_tfidf</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="predictor.table_predictor"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 id="predictor.table_predictor.TablePredictor" class="doc doc-heading">
+        <code>TablePredictor</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="predictor.table_predictor.TablePredictor.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agro_eco</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gaul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">table_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">column_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>A class for predicting origin based on the frequency of name occurrences. This is implemented using a simple frequency tables based on the voter registration data.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>agro_eco</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether to predict agro-ecological zones. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>gaul</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to predict GAUL regions. Defaults to False.</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>table_path</code></td>
+        <td><code>Union[str, pathlib.Path]</code></td>
+        <td><p>Path to the CSV file with the frequency table. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>column_name</code></td>
+        <td><code>str</code></td>
+        <td><p>name of the column in the dataframe with the surname information. Defaults to None.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>predictor/table_predictor.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> 
+             <span class="n">agro_eco</span> <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> 
+             <span class="n">gaul</span> <span class="p">:</span> <span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> 
+             <span class="n">table_path</span> <span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Path</span><span class="p">]</span>  <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+             <span class="n">column_name</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A class for predicting origin based on the frequency of name occurrences. This is implemented using a simple frequency tables based on the voter registration data.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        agro_eco (bool, optional): Whether to predict agro-ecological zones. Defaults to False.</span>
+<span class="sd">        gaul (bool, optional): whether to predict GAUL regions. Defaults to False.</span>
+<span class="sd">        table_path (Union[str, Path], optional): Path to the CSV file with the frequency table. Defaults to None.</span>
+<span class="sd">        column_name (str, optional): name of the column in the dataframe with the surname information. Defaults to None.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>        
+
+    <span class="k">if</span> <span class="n">table_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">agro_eco</span><span class="p">:</span>
+            <span class="n">table_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;predictor&#39;</span><span class="p">,</span><span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="s2">&quot;agro_zone_predictor.csv&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">agro_eco</span><span class="o">==</span><span class="kc">False</span> <span class="ow">and</span> <span class="n">gaul</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+            <span class="n">table_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;predictor&#39;</span><span class="p">,</span> <span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="s1">&#39;gaul_predictor.csv&#39;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">agro_eco</span> <span class="o">==</span> <span class="kc">True</span> <span class="ow">and</span> <span class="n">gaul</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Can&#39;t have agro_eco and gaul at the same time.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">table_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;predictor&#39;</span><span class="p">,</span><span class="s2">&quot;table&quot;</span><span class="p">,</span> <span class="s2">&quot;table_predictor.csv&quot;</span><span class="p">)</span>
+
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">table_path</span> <span class="o">=</span> <span class="n">table_path</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_table</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">column_name</span> <span class="o">=</span> <span class="n">column_name</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 id="predictor.table_predictor.TablePredictor.predict" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fuzzy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Predicts region probability by first trying to find an exact match and then 
+fuzzy matching for any names not matched.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>text</code></td>
+        <td><code>list</code></td>
+        <td><p>List of strings to predict</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>      <p>Keyword Arguments:
+    n_jobs (int): The number of cores to use for fuzzy-matching. This
+    only applies to fuzzy-matching. If all names are found by exact match, then
+    multi-processing is not used at all. (default: {1})</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DataFrame</code></td>
+      <td><p>pd.DataFrame: DataFrame of predictions</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>predictor/table_predictor.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">fuzzy</span> <span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span> <span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Predicts region probability by first trying to find an exact match and then </span>
+<span class="sd">    fuzzy matching for any names not matched.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        text (list): List of strings to predict</span>
+
+<span class="sd">    Keyword Arguments:</span>
+<span class="sd">        n_jobs (int): The number of cores to use for fuzzy-matching. This</span>
+<span class="sd">        only applies to fuzzy-matching. If all names are found by exact match, then</span>
+<span class="sd">        multi-processing is not used at all. (default: {1})</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        pd.DataFrame: DataFrame of predictions</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">processed_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_text</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># First do exact match</span>
+    <span class="n">predicted_df</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_exact_match</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">processed_text</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">fuzzy</span><span class="p">:</span>
+        <span class="c1"># get dict of exact matches in same form as processed text</span>
+        <span class="n">predicted_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">reversed</span><span class="p">,</span> <span class="n">predicted_df</span><span class="p">[</span><span class="s1">&#39;processed_surname&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+
+        <span class="k">if</span> <span class="n">predicted_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">processed_text</span><span class="p">):</span>
+            <span class="n">difference</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">processed_text</span><span class="p">)</span> <span class="o">-</span> <span class="n">predicted_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span><span class="o">.</span><span class="n">size</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Doing fuzzy matching for </span><span class="si">{</span><span class="n">difference</span><span class="si">}</span><span class="s2"> names...&quot;</span><span class="p">)</span>
+
+            <span class="c1"># Get names that weren&#39;t found</span>
+            <span class="n">lost_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span> <span class="p">:</span> <span class="n">processed_text</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">processed_text</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">predicted_dict</span><span class="p">)}</span>
+
+            <span class="k">if</span> <span class="n">n_jobs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">fuzzy_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fuzzy_match</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">lost_dict</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+
+            <span class="k">elif</span> <span class="n">n_jobs</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">_fuzzy_lost_dict</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fuzzy_match</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="n">lost_dict</span><span class="p">)</span>
+
+                <span class="n">df_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_partition_table</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">n_jobs</span><span class="p">)</span>
+
+                <span class="n">pool</span> <span class="o">=</span> <span class="n">Pool</span><span class="p">(</span><span class="n">processes</span> <span class="o">=</span> <span class="n">n_jobs</span><span class="p">)</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">_fuzzy_lost_dict</span><span class="p">,</span> <span class="n">df_list</span><span class="p">)</span>
+
+                <span class="c1"># Now get max probability for each name</span>
+                <span class="n">results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+                <span class="n">max_df</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">results_df</span>
+                    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">results_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">max</span><span class="p">()</span>
+                    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="n">left_on</span> <span class="o">=</span> <span class="s1">&#39;name_match&#39;</span><span class="p">,</span> <span class="n">right_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+                <span class="p">)</span>
+
+                <span class="n">predicted_df</span> <span class="o">=</span> <span class="n">predicted_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">max_df</span><span class="p">)</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n_jobs</span><span class="si">}</span><span class="s2"> n_jobs not allowed as an input&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">predicted_df</span>
 </code></pre></div>
         </details>
     </div>
