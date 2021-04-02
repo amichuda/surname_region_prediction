@@ -17,6 +17,19 @@ plugins:
 
 extra:
   url_prefix: !!python/object/apply:os.getenv ["MM_DOCS_URL_PREFIX"]
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/amichuda
+      name: My Github
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/aleksandr-michuda-3a839b149/
+      name: My Linkedin
+    - icon: fontawesome/regular/envelope
+      link: mailto:<amichuda@ucdavis.edu>
+      name: Email me!
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/econaleks
+      name: Follow me on Twitter!
 
 markdown_extensions:
   - pymdownx.emoji:
@@ -28,3 +41,10 @@ markdown_extensions:
   - pymdownx.details
   - attr_list
   - footnotes
+
+google_analytics:
+  - UA-178740663-2
+  - auto
+
+repo_url: https://github.com/amichuda/surname_region_prediction
+

@@ -8,15 +8,24 @@ import numpy as np
 from multiprocessing import Pool
 from functools import partial
 import itertools
+from typing import Union
 
 class TablePredictor:
     
-    def __init__(self, agro_eco = False, gaul=False, table_path  = None, column_name = None):
-        """A class for predicting origin based on direct frequency of name occurrences
+    def __init__(self, 
+                 agro_eco : bool = False, 
+                 gaul : bool=False, 
+                 table_path : Union[str, Path]  = None, 
+                 column_name : str = None):
+        """A class for predicting origin based on the frequency of name occurrences. This is implemented using a simple frequency tables based on the voter registration data.
 
-        Keyword Arguments:
-            table_path {str} -- path to table with occurrence probabilities (default: {None})
-        """
+        Args:
+            agro_eco (bool, optional): Whether to predict agro-ecological zones. Defaults to False.
+            gaul (bool, optional): whether to predict GAUL regions. Defaults to False.
+            table_path (Union[str, Path], optional): Path to the CSV file with the frequency table. Defaults to None.
+            column_name (str, optional): name of the column in the dataframe with the surname information. Defaults to None.
+
+        """        
         
         if table_path is None:
             if agro_eco:
@@ -35,23 +44,23 @@ class TablePredictor:
         
         self.column_name = column_name
         
-    def _load_table(self):
+    def _load_table(self) -> pd.DataFrame:
         """Loads table as attribute
 
         Returns:
-            pandas.DataFrame 
+            pd.DataFrame 
         """
         
         return pd.read_csv(self.table_path, index_col ='surname')
     
-    def _process_text(self, text):
+    def _process_text(self, text : Union[str, list]) -> dict:
         """Processes text for prediction
 
-        Arguments:
-            text {str or list-like} -- String to pre-process
+        Args:
+            text (Union[str, list]): String to pre-process
 
         Returns:
-            dict -- Dictionary or mapping between input text and pre-processed text
+            dict: Dictionary or mapping between input text and pre-processed text
         """
         
         if isinstance(text, str):
@@ -84,12 +93,12 @@ class TablePredictor:
         
         return processed_text_dict
     
-    def _exact_match(self, text, data):
+    def _exact_match(self, text : list, data: pd.DataFrame) -> pd.DataFrame:
         """Tries to find exact match between input text and table
 
-        Arguments:
-            text {list} -- List of strings to find match
-            data {pandas.DataFrame} -- pandas DataFrame with table of occurrence probabilities
+        Args:
+            text (list): List of strings to find match
+            data (pandas.DataFrame): pandas DataFrame with table of occurrence probabilities
             
             >>> from predictor.classifier_prediction import TablePredictor
             >>> # Instantiate predictor
@@ -99,7 +108,7 @@ class TablePredictor:
             >>> print(prediction)
 
         Returns:
-            pandas.DataFrame -- A pandas DataFrame of exact matches
+            pandas.DataFrame: A pandas DataFrame of exact matches
         """
         
         result_df = (
@@ -113,15 +122,15 @@ class TablePredictor:
         
         return result_df
     
-    def _fuzzy_match(self, data, text):
+    def _fuzzy_match(self, data: pd.DataFrame, text: list) -> pd.DataFrame:
         """Finds fuzzy matched surnames and merges in table
 
         Arguments:
-            data {pandas.DataFrame} -- Input table of occurrence probabilities
-            text {list} -- List of strings to fuzzy match
+            data (pd.DataFrame): Input table of occurrence probabilities
+            text (list): List of strings to fuzzy match
 
         Returns:
-            pandas.DataFrame -- DataFrame with fuzzy matched occurrences
+            pd.DataFrame: DataFrame with fuzzy matched occurrences
         """
         
         print("Fuzzy Matching...")
@@ -133,12 +142,12 @@ class TablePredictor:
         extract_df = pd.DataFrame(extract_dict).T
         return extract_df
     
-    def _partition_table(self, data, n):
+    def _partition_table(self, data: pd.DataFrame, n: int) -> list:
         """Partitions data into pieces for multiprocessing
 
         Arguments:
-            data {pandas.DataFrame} -- DataFrame to break up
-            n {int} -- number of pieces to break into
+            data (pandas.DataFrame): DataFrame to break up
+            n (int): number of pieces to break into
 
         Returns:
             list -- List of DataFrames of input DataFrame broken into chunks
@@ -148,20 +157,20 @@ class TablePredictor:
         
               
     
-    def predict(self, text, fuzzy = False, n_jobs = 1):
+    def predict(self, text: list, fuzzy : bool = False, n_jobs : int = 1) -> pd.DataFrame:
         """Predicts region probability by first trying to find an exact match and then 
         fuzzy matching for any names not matched.
 
         Arguments:
-            text {list} -- List of strings to predict
+            text (list): List of strings to predict
 
         Keyword Arguments:
-            n_jobs {int} -- The number of cores to use for fuzzy-matching. This
+            n_jobs (int): The number of cores to use for fuzzy-matching. This
             only applies to fuzzy-matching. If all names are found by exact match, then
             multi-processing is not used at all. (default: {1})
 
         Returns:
-            pandas.DataFrame -- DataFrame of predictions
+            pd.DataFrame: DataFrame of predictions
         """
         
         processed_text = self._process_text(text = text)
