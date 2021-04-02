@@ -1,5 +1,6 @@
 import joblib
 from pathlib import Path
+from typing import Union
 
 import pandas as pd
 from predictor.exceptions import NoTextException
@@ -9,24 +10,36 @@ import os
 class ClassifierPredictor:
     def __init__(
         self,
-        column_name = None,
-        tfidf_path=None,
-        model_path=None,
-        label_encoder_path=None,
-        agro_eco=False,
-        gaul=False,
-        calibrate=True,
+        column_name : str = None,
+        tfidf_path : Union[str, Path] =None,
+        model_path : Union[str, Path]=None,
+        label_encoder_path : Union[str, Path] =None,
+        agro_eco : bool=False,
+        gaul : bool =False,
+        calibrate : bool =True,
         **kwargs
     ):
-        """This class uses a pickled trained classifier to make predictions about surnames.
-        It loads the pickled processors (which include a tfidf transformer and label encoder),
-        as well as the classifier and then trainsforms input text and give prediction
+        """A class that generates predictions based on a trained XGBoost model. Can predict based on Ugandan Regions, GAUL regions, or FAO agro-ecological zones. Optionally predicts gaul regions using an ensemble calibrated classifier.
+        
+        Example:
+            >>> surnames = pd.DataFrame({'names':['Ahimbisibwe', 'Auma', 'Amin', 
+                         'Makubuya', 'Museveni', 'Oculi', 'Kadaga']})
+            >>> c = ClassifierPredictor(column_name='names')
+            >>> predict_xgb = c.predict(surnames, 
+                                        get_label_names=True, 
+                                        predict_prob = True,
+                                        df_out =True)
 
-        Keyword Arguments:
-            tfidf_path {str} -- path to trained tfidf transformer (joblib object) (default: {None})
-            model_path {str} -- path to joblib pickle of trained model (default: {None})
-            label_encoder_path {str} -- path to label encoder pickled object (default: {None})
-        """        
+        Args:
+            column_name (str, optional): When passing a pandas dataframe, the name of the columns with surnames. Defaults to None.
+            tfidf_path (Union[str, Path], optional): the path of the joblib dump of the tfidf transformer. Defaults to None.
+            model_path (Union[str, Path], optional): the path of the joblib dump of the trained model. Defaults to None.
+            label_encoder_path (Union[str, Path], optional): the path of the joblib dump of the label encoder. Defaults to None.
+            agro_eco (bool, optional): Whether to predict agro-ecological zones. Defaults to False.
+            gaul (bool, optional): whether to predict gaul regions. Defaults to False.
+            calibrate (bool, optional): whether to predict gaul regions. Defaults to True.
+            
+        """              
         if agro_eco ==True and gaul==True:
             
             raise Exception("You can't have agro_eco and gaul both true")

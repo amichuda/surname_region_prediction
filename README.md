@@ -29,7 +29,7 @@ The intended idea behind using this package will be take a columns of surnames a
   - [Submodules](#submodules)
   - [predictor.classifier_prediction module](#predictorclassifier_prediction-module)
     - [class predictor.classifier_prediction.ClassifierPredictor(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#class-predictorclassifier_predictionclassifierpredictortfidf_pathnone-model_pathnone-label_encoder_pathnone-kwargs)
-      - [\_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#inittfidf_pathnone-model_pathnone-label_encoder_pathnone-kwargs)
+      - [\_\_init\_\_(tfidf_path=None, model_path=None, label_encoder_path=None, \*\*kwargs)](#__init__tfidf_pathnone-model_pathnone-label_encoder_pathnone-kwargs)
       - [load_label_encoder()](#load_label_encoder)
       - [load_model()](#load_model)
       - [load_tfidf()](#load_tfidf)
@@ -40,7 +40,7 @@ The intended idea behind using this package will be take a columns of surnames a
     - [exception predictor.exceptions.NoTextException()](#exception-predictorexceptionsnotextexception)
   - [predictor.table_predictor module](#predictortable_predictor-module)
     - [class predictor.table_predictor.TablePredictor(table_path=None)](#class-predictortable_predictortablepredictortable_pathnone)
-      - [\_\_init\_\_(table_path=None)](#inittable_pathnone)
+      - [\_\_init\_\_(table_path=None)](#__init__table_pathnone)
       - [predict(text, n_jobs=1)](#predicttext-n_jobs1)
   - [Module contents](#module-contents)
 

@@ -24,6 +24,9 @@ DESCRIPTION = "Predictor of Ugandan region of origin based on surname"
 URL = "https://github.com/amichuda/uber_surname_region_prediction"
 PYTHON_REQ = ">=3.5"
 
+with open("requirements.txt") as f:
+    REQUIREMENTS = f.read().splitlines()
+
 setup(
     name=NAME,
     version='0.1dev',
@@ -36,6 +39,6 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type=LONG_DESC_TYPE,
     classifiers=CLASSIFIERS,
-    install_requires=requirements.txt,
+    install_requires=REQUIREMENTS,
     packages=find_packages(),
 )
