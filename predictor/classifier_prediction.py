@@ -1,10 +1,15 @@
 import joblib
 from pathlib import Path
-from typing import Union
+from typing import Union, TypeVar
 
 import pandas as pd
 from predictor.exceptions import NoTextException
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 import os
+from xgboost import XGBClassifier
+from sklearn.calibration import CalibratedClassifierCV
+
+Vector = TypeVar('Vector')
 
 
 class ClassifierPredictor:
@@ -130,36 +135,42 @@ class ClassifierPredictor:
         
         self.column_name = column_name
 
-    def load_tfidf(self):
-        """Loads Tfidf transformer. See 
-        https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html
-
-        for information on all functionality.
+    def load_tfidf(self) -> TfidfVectorizer:
+        """Loads Tfidf transformer. See [here](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) for information on all functionality.
+        
+        Returns:
+            TfidfVectorizer: A sklearn Tfidf Vectorizer Object
         """
 
         return joblib.load(self.tfidf_path)
 
-    def load_model(self):
+    def load_model(self) -> Union[XGBClassifier, CalibratedClassifierCV]:
         """Loads pickled trained classifier. Current one is an XGBoost classifier.
-            See: https://xgboost.readthedocs.io/en/latest/ for more details.
+            See [here](https://xgboost.readthedocs.io/en/latest/) for more details.
+            
+        Returns:
+            Union[XGBClassifier, CalibratedClassifierCV]: Depending on the option, either a trained XGBoost Classifier or an sklearn calibrated classifier.
         """
         return joblib.load(self.model_path)
 
-    def load_label_encoder(self):
-        """Loads label encoder. See https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html
-            for more information
+    def load_label_encoder(self) -> CountVectorizer:
+        """Loads label encoder. See [here](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html)
+            for more information.
+            
+        Returns:
+            CountVectorizer: An sklearn Count Vectorizer object
 
         """
         return joblib.load(self.label_encoder_path)
 
-    def process_text(self, text):
+    def process_text(self, text: Union[str, list]) -> list:
         """Pre-processes input text to make it ready for prediction.
 
         Arguments:
-            text {str or list-like object} -- The input string or list of strings that are to be processed
+            text (str or list-like object): The input string or list of strings that are to be processed
 
         Returns:
-            list -- Pre-processed list of strings
+            list: Pre-processed list of strings
         """
 
         if isinstance(text, str):
@@ -174,7 +185,18 @@ class ClassifierPredictor:
 
         return processed_text
 
-    def transform_text(self, text=None):
+    def transform_text(self, text : str = None) -> Vector:
+        """A function that takes a list of surnames or strings and transforms them through the tf-idf transformer
+
+        Args:
+            text (str, optional): the text to be transformed. Defaults to None.
+
+        Raises:
+            NoTextException: Raises if no text was given
+
+        Returns:
+            Vector: A sparse matrix of numpy matrix
+        """        
 
         if text is None:
             raise NoTextException("No text was given for transformation.")
@@ -183,15 +205,18 @@ class ClassifierPredictor:
 
         return tfidf.transform(text)
 
-    def predict(
-        self, text=None, get_label_names=False, predict_prob=False, df_out=False):
+    def predict(self, 
+                text : list =None, 
+                get_label_names : bool=False, 
+                predict_prob : bool=False, 
+                df_out : bool=False) -> Union[pd.DataFrame, list]:        
         """Predicts origin based on classifier
 
         Keyword Arguments:
-            text {list} -- List of strings to be predicted (default: {None})
-            get_label_names {bool} -- Whether to output the label names after prediction (default: {False})
-            predict_prob {bool} -- whether to give probabilities of coming from each region (default: {False})
-            df_out {bool} -- whether to output a pandas dataframe (default: {False})
+            text (list): List of strings to be predicted (default: {None})
+            get_label_names (bool): Whether to output the label names after prediction (default: {False})
+            predict_prob (bool): whether to give probabilities of coming from each region (default: {False})
+            df_out (bool): whether to output a pandas dataframe (default: {False})
             
             >>> from predictor.classifier_prediction import ClassifierPredictor
             >>> # Instantiate predictor
@@ -201,7 +226,7 @@ class ClassifierPredictor:
             >>> print(prediction)
 
         Returns:
-            pandas.DataFrame or list -- An object that contains predictions from the model
+            Union[pd.DataFrame, list]: An object that contains predictions from the model
         """
         labels = self.load_label_encoder()
         raw_text_aux = text.copy(deep = True)

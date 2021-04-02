@@ -1,7 +1,10 @@
-# uber_surname_region_prediction
+# Surname-Region Prediction
+
 This repository creates a package that predicts region of origin based on surname in Uganda.
 
 The intended idea behind using this package will be take a columns of surnames and apply these functions to the names to get predicted regions of origin.
+
+This package uses `sklearn` and `xgboost`.
 
 ## Changelog
 
@@ -23,6 +26,33 @@ The intended idea behind using this package will be take a columns of surnames a
 - made fuzzy matching in the table predictor optional (with the `fuzzy` flag)
   - `False` by default
 - predictions output the input names
+
+## Installation
+
+To install the package, you can either install with pip:
+
+```
+pip install .
+```
+
+from the folder,
+
+or install repository:
+
+```
+pip install git+https://github.com/amichuda/uber_surname_region_prediction
+```
+
+## Quickstart
+
+To recreate the conda environment, do the following:
+
+```bash
+
+cd /path/to/uber_surname_region_prediction
+
+conda env -f environment.yml
+```
 
 ## Directory Structure
 
@@ -65,32 +95,7 @@ uber_surname_region_prediction
 
 ```
 
-## Installation
-
-This package requires `git lfs` to be able to store models that are larger than github's default maximum file size. To install `git lfs` on your machine, please see [here](https://git-lfs.github.com/)
-
-Then extract the zip file and run `git lfs install`.
-
-After this, you should be able to clone it with `git lfs`:
-
-```
-git lfs clone https://github.com/amichuda/uber_surname_region_prediction.git
-```
-
-To install the package, you can install with pip:
-
-```
-pip install .
-```
-
-from the folder, or to recreate the conda environment, do the following:
-
-```bash
-
-cd /path/to/uber_surname_region_prediction
-
-conda env -f environment.yml
-```
+## Example
 
 To run the predictors, see `main.py` for a runnable example. A minimal example, using a pandas dataframe is shown below:
 
@@ -126,4 +131,3 @@ predict_xgb_agro_eco = cag.predict(surnames,
               df_out =True)
               
 ```
-
