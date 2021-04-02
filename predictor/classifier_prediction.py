@@ -43,7 +43,6 @@ class ClassifierPredictor:
             agro_eco (bool, optional): Whether to predict agro-ecological zones. Defaults to False.
             gaul (bool, optional): whether to predict gaul regions. Defaults to False.
             calibrate (bool, optional): whether to predict gaul regions. Defaults to True.
-            
         """              
         if agro_eco ==True and gaul==True:
             
