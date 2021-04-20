@@ -284,13 +284,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#predictor.classifier_prediction" class="md-nav__link">
-    predictor.classifier_prediction
+  <a href="#predictor" class="md-nav__link">
+    predictor
   </a>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#predictor.classifier_prediction" class="md-nav__link">
+    classifier_prediction
+  </a>
+  
+    <nav class="md-nav" aria-label="classifier_prediction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#predictor.classifier_prediction.ClassifierPredictor" class="md-nav__link">
     ClassifierPredictor
   </a>
@@ -351,15 +359,41 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#predictor.table_predictor" class="md-nav__link">
-    predictor.table_predictor
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#predictor.exceptions" class="md-nav__link">
+    exceptions
+  </a>
+  
+    <nav class="md-nav" aria-label="exceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictor.exceptions.NoTextException" class="md-nav__link">
+    NoTextException
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictor.table_predictor" class="md-nav__link">
+    table_predictor
+  </a>
+  
+    <nav class="md-nav" aria-label="table_predictor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#predictor.table_predictor.TablePredictor" class="md-nav__link">
     TablePredictor
   </a>
@@ -378,6 +412,11 @@
   <a href="#predictor.table_predictor.TablePredictor.predict" class="md-nav__link">
     predict()
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -419,13 +458,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#predictor.classifier_prediction" class="md-nav__link">
-    predictor.classifier_prediction
+  <a href="#predictor" class="md-nav__link">
+    predictor
   </a>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#predictor.classifier_prediction" class="md-nav__link">
+    classifier_prediction
+  </a>
+  
+    <nav class="md-nav" aria-label="classifier_prediction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#predictor.classifier_prediction.ClassifierPredictor" class="md-nav__link">
     ClassifierPredictor
   </a>
@@ -486,15 +533,41 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#predictor.table_predictor" class="md-nav__link">
-    predictor.table_predictor
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
+  <a href="#predictor.exceptions" class="md-nav__link">
+    exceptions
+  </a>
+  
+    <nav class="md-nav" aria-label="exceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#predictor.exceptions.NoTextException" class="md-nav__link">
+    NoTextException
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictor.table_predictor" class="md-nav__link">
+    table_predictor
+  </a>
+  
+    <nav class="md-nav" aria-label="table_predictor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#predictor.table_predictor.TablePredictor" class="md-nav__link">
     TablePredictor
   </a>
@@ -513,6 +586,11 @@
   <a href="#predictor.table_predictor.TablePredictor.predict" class="md-nav__link">
     predict()
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -543,8 +621,35 @@
 
   <div class="doc doc-object doc-module">
 
-<a id="predictor.classifier_prediction"></a>
+<a id="predictor"></a>
     <div class="doc doc-contents first">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="predictor.classifier_prediction" class="doc doc-heading">
+        <code>classifier_prediction</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
 
 
 
@@ -562,12 +667,12 @@
 
 
 
-<h2 id="predictor.classifier_prediction.ClassifierPredictor" class="doc doc-heading">
+<h3 id="predictor.classifier_prediction.ClassifierPredictor" class="doc doc-heading">
         <code>ClassifierPredictor</code>
 
 
 
-</h2>
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -589,14 +694,14 @@
 
 
 
-<h3 id="predictor.classifier_prediction.ClassifierPredictor.__init__" class="doc doc-heading">
+<h4 id="predictor.classifier_prediction.ClassifierPredictor.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">tfidf_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">label_encoder_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">agro_eco</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gaul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">calibrate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -801,11 +906,11 @@
 
 
 
-<h3 id="predictor.classifier_prediction.ClassifierPredictor.load_label_encoder" class="doc doc-heading">
+<h4 id="predictor.classifier_prediction.ClassifierPredictor.load_label_encoder" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">load_label_encoder</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -850,11 +955,11 @@
 
 
 
-<h3 id="predictor.classifier_prediction.ClassifierPredictor.load_model" class="doc doc-heading">
+<h4 id="predictor.classifier_prediction.ClassifierPredictor.load_model" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">load_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -898,11 +1003,11 @@
 
 
 
-<h3 id="predictor.classifier_prediction.ClassifierPredictor.load_tfidf" class="doc doc-heading">
+<h4 id="predictor.classifier_prediction.ClassifierPredictor.load_tfidf" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">load_tfidf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -945,11 +1050,11 @@
 
 
 
-<h3 id="predictor.classifier_prediction.ClassifierPredictor.predict" class="doc doc-heading">
+<h4 id="predictor.classifier_prediction.ClassifierPredictor.predict" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">get_label_names</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">predict_prob</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">df_out</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1069,11 +1174,11 @@
 
 
 
-<h3 id="predictor.classifier_prediction.ClassifierPredictor.process_text" class="doc doc-heading">
+<h4 id="predictor.classifier_prediction.ClassifierPredictor.process_text" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">process_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1148,11 +1253,11 @@
 
 
 
-<h3 id="predictor.classifier_prediction.ClassifierPredictor.transform_text" class="doc doc-heading">
+<h4 id="predictor.classifier_prediction.ClassifierPredictor.transform_text" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">transform_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1260,8 +1365,16 @@
 
   <div class="doc doc-object doc-module">
 
-<a id="predictor.table_predictor"></a>
-    <div class="doc doc-contents first">
+
+
+<h2 id="predictor.exceptions" class="doc doc-heading">
+        <code>exceptions</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
 
 
 
@@ -1278,12 +1391,71 @@
 
 
 
-<h2 id="predictor.table_predictor.TablePredictor" class="doc doc-heading">
-        <code>TablePredictor</code>
+<h3 id="predictor.exceptions.NoTextException" class="doc doc-heading">
+        <code>NoTextException</code>
+
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Raises error if text input is not given</p>
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-module">
+
+
+
+<h2 id="predictor.table_predictor" class="doc doc-heading">
+        <code>table_predictor</code>
 
 
 
 </h2>
+
+    <div class="doc doc-contents ">
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h3 id="predictor.table_predictor.TablePredictor" class="doc doc-heading">
+        <code>TablePredictor</code>
+
+
+
+</h3>
 
     <div class="doc doc-contents ">
 
@@ -1305,14 +1477,14 @@
 
 
 
-<h3 id="predictor.table_predictor.TablePredictor.__init__" class="doc doc-heading">
+<h4 id="predictor.table_predictor.TablePredictor.__init__" class="doc doc-heading">
 <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">agro_eco</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gaul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">table_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">column_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
   </span>
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1400,11 +1572,11 @@
 
 
 
-<h3 id="predictor.table_predictor.TablePredictor.predict" class="doc doc-heading">
+<h4 id="predictor.table_predictor.TablePredictor.predict" class="doc doc-heading">
 <code class="highlight language-python"><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">fuzzy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
 
 
-</h3>
+</h4>
 
     <div class="doc doc-contents ">
 
@@ -1537,6 +1709,15 @@ fuzzy matching for any names not matched.</p>
     </div>
 
   </div>
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
                 
                   
                     
@@ -1545,7 +1726,7 @@ fuzzy matching for any names not matched.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 2, 2021</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 20, 2021</span>
     
   </small>
 </div>
