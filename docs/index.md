@@ -29,6 +29,12 @@ This package uses `sklearn` and `xgboost`.
 
 ## Installation
 
+Before installing, please make sure to install `git lfs` from [here](https://git-lfs.github.com/). Then clone the repository:
+
+```
+git lfs clone https://github.com/amichuda/surname_region_prediction.git
+```
+
 To install the package, you can either install with pip:
 
 ```
