@@ -34,7 +34,7 @@ dependencies:
     - sphinxcontrib-qthelp==1.0.3
     - sphinxcontrib-serializinghtml==1.1.4
     - tabulate==0.8.7
-    - tbb==2020.0.133
+    - tbb # ==2020.0.133
     - unify==0.5
     - untokenize==0.1.1
     - xgboost==1.0.2
