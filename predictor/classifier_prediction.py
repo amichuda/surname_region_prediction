@@ -1,3 +1,4 @@
+from cProfile import label
 import joblib
 from pathlib import Path
 from typing import Union, TypeVar
@@ -52,79 +53,93 @@ class ClassifierPredictor:
         if tfidf_path is None:
             
             if agro_eco:
-                tfidf_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "tfidf_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib",
-                )
+                # tfidf_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "tfidf_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib",
+                # )
+                tfidf_path = "predictor/saved_models/tfidf_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib"
             elif gaul:
-                tfidf_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "tfidf_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib",
-                )
+                # tfidf_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "tfidf_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib",
+                # )
+                
+                tfidf_path = "predictor/saved_models/tfidf_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib"
 
             else:
-                tfidf_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "tfidf_multilabel_False_nokampala_True.joblib",
-                )
+                # tfidf_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "tfidf_multilabel_False_nokampala_True.joblib",
+                # )
+                
+                tfidf_path = "predictor/saved_models/tfidf_multilabel_False_nokampala_True.joblib"
         else:
             tfidf_path = Path(tfidf_path)
 
         if label_encoder_path is None:
 
             if agro_eco:
-                label_encoder_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "label_encoder_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib",
-                )
+                # label_encoder_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "label_encoder_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib",
+                # )
+                label_encoder_path = "predictor/saved_models/label_encoder_multilabel_False_nokampala_True_agro_zone_smote_False_opt.joblib"
             elif gaul:
-                label_encoder_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "label_encoder_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib",
-                )
+                # label_encoder_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "label_encoder_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib",
+                # )
+                
+                label_encoder_path = "predictor/saved_models/label_encoder_multilabel_False_nokampala_True_gaul_smote_False_gaul_opt.joblib"
                 
             else:
-                label_encoder_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "label_encoder_multilabel_False_nokampala_True.joblib",
-                )
+                # label_encoder_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "label_encoder_multilabel_False_nokampala_True.joblib",
+                # )
+                
+                label_encoder_path = "predictor/saved_models/label_encoder_multilabel_False_nokampala_True.joblib"
         else:
             label_encoder_path = Path(label_encoder_path)
 
         if model_path is None:
 
             if agro_eco:
-                model_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "xgb_None_multilabel_False_add_kampala_True_agro_zone_smote_False_opt.joblib",
-                )
+                # model_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "xgb_None_multilabel_False_add_kampala_True_agro_zone_smote_False_opt.joblib",
+                # )
+                model_path = "predictor/saved_models/xgb_None_multilabel_False_add_kampala_True_agro_zone_smote_False_opt.joblib"
             elif gaul:
                 if calibrate:
-                    model_path = Path(
-                        "predictor",
-                        'saved_models',
-                        'xgb_None_calibrated_gaul_opt.joblib'
-                    )
+                    # model_path = Path(
+                    #     "predictor",
+                    #     'saved_models',
+                    #     'xgb_None_calibrated_gaul_opt.joblib'
+                    # )
+                    model_path = "predictor/saved_models/xgb_None_calibrated_gaul_opt.joblib"
                 else:
-                    model_path = Path(
-                        "predictor",
-                        "saved_models",
-                        "xgb_None_multilabel_False_add_kampala_True_gaul_smote_False_gaul_opt.joblib"
-                    )
+                    # model_path = Path(
+                    #     "predictor",
+                    #     "saved_models",
+                    #     "xgb_None_multilabel_False_add_kampala_True_gaul_smote_False_gaul_opt.joblib"
+                    # )
+                    model_path = "predictor/saved_models/xgb_None_multilabel_False_add_kampala_True_gaul_smote_False_gaul_opt.joblib"
                     
             else:
-                model_path = Path(
-                    "predictor",
-                    "saved_models",
-                    "xgb_None_multilabel_False_add_kampala_True.joblib",
-                )
+                # model_path = Path(
+                #     "predictor",
+                #     "saved_models",
+                #     "xgb_None_multilabel_False_add_kampala_True.joblib",
+                # )
+                model_path = "predictor/saved_models/xgb_None_multilabel_False_add_kampala_True.joblib"
         else:
             model_path = Path(model_path)
 
